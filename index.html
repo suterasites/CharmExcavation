@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Charm Excavation - South East Melbourne Earthmoving & Civil Works</title>
+<link rel="icon" type="image/png" href="Assets/Logo.png">
+<link rel="apple-touch-icon" href="Assets/Logo.png">
+<meta name="theme-color" content="#5a1414">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -196,7 +199,7 @@
 <body class="bg-char-950 text-cream">
 
 <!-- ============ NAVBAR ============ -->
-<header class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-char-950/70 border-b border-cream/5">
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-char-950/70 border-b border-cream/5 transition-transform duration-300 ease-out will-change-transform">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
     <a href="#" class="flex items-center gap-3">
       <img src="Assets/Logo.png" alt="Charm Excavation" class="h-10 w-auto" />
@@ -556,7 +559,7 @@
             </div>
             <div>
               <div class="font-sport text-xs tracking-[0.25em] uppercase text-cream/50">Phone</div>
-              <div class="font-display text-2xl text-cream group-hover:text-gold-400 transition">0431 529 254</div>
+              <div class="text-lg text-cream group-hover:text-gold-400 transition">0431 529 254</div>
             </div>
           </a>
           <a href="mailto:Dylan@charmexcavation.com.au" class="flex items-start gap-4 group">
@@ -670,5 +673,33 @@
   </div>
 </footer>
 
+<script>
+  (function () {
+    const nav = document.getElementById('site-nav');
+    if (!nav) return;
+    let lastY = window.scrollY;
+    let ticking = false;
+    const THRESHOLD = 80;
+
+    function onScroll() {
+      const y = window.scrollY;
+      const goingDown = y > lastY;
+      if (y > THRESHOLD && goingDown) {
+        nav.style.transform = 'translateY(-100%)';
+      } else {
+        nav.style.transform = 'translateY(0)';
+      }
+      lastY = y;
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+</script>
 </body>
 </html>

@@ -214,9 +214,22 @@
       <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a2 2 0 011.94 1.52l.7 2.82a2 2 0 01-.45 1.9L8.2 10.8a16 16 0 005 5l1.56-1.27a2 2 0 011.9-.45l2.82.7A2 2 0 0121 16.72V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
       0431 529 254
     </a>
-    <button class="md:hidden text-cream" aria-label="Open menu">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <button id="mobile-menu-btn" class="md:hidden text-cream" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg id="mobile-menu-icon-open" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="mobile-menu-icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6"/></svg>
     </button>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden border-t border-cream/5 bg-char-950/95 backdrop-blur-md">
+    <nav class="px-6 py-6 flex flex-col gap-1 text-sm font-sport font-medium tracking-[0.14em] uppercase text-cream/80">
+      <a href="#about" class="py-3 border-b border-cream/5 hover:text-gold-400 transition-colors">About</a>
+      <a href="#services" class="py-3 border-b border-cream/5 hover:text-gold-400 transition-colors">Services</a>
+      <a href="#work" class="py-3 border-b border-cream/5 hover:text-gold-400 transition-colors">Recent Work</a>
+      <a href="#contact" class="py-3 border-b border-cream/5 hover:text-gold-400 transition-colors">Contact</a>
+      <a href="tel:0431529254" class="mt-4 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-sm bg-burgundy-700 text-cream font-sport font-semibold tracking-wider">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a2 2 0 011.94 1.52l.7 2.82a2 2 0 01-.45 1.9L8.2 10.8a16 16 0 005 5l1.56-1.27a2 2 0 011.9-.45l2.82.7A2 2 0 0121 16.72V19a2 2 0 01-2 2h-1C9.72 21 3 14.28 3 6V5z"/></svg>
+        0431 529 254
+      </a>
+    </nav>
   </div>
 </header>
 
@@ -470,35 +483,35 @@
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4">
-      <div class="gallery-item relative overflow-hidden rounded-sm aspect-[3/4] md:aspect-[3/4] md:row-span-2">
+      <div class="gallery-item relative overflow-hidden rounded-sm aspect-square md:aspect-[3/4] md:row-span-2">
         <img src="Assets/machinery-cat-residential-1.jpg" alt="" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
-      <div class="gallery-item relative overflow-hidden rounded-sm aspect-[4/3]">
+      <div class="gallery-item relative overflow-hidden rounded-sm aspect-square md:aspect-[4/3]">
         <img src="Assets/civil-aerial-roadworks-1.jpg" alt="" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
-      <div class="gallery-item relative overflow-hidden rounded-sm aspect-[4/3]">
+      <div class="gallery-item relative overflow-hidden rounded-sm aspect-square md:aspect-[4/3]">
         <img src="Assets/excavation-deep-pit-1.jpg" alt="" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
-      <div class="gallery-item relative overflow-hidden rounded-sm aspect-[4/3]">
+      <div class="gallery-item relative overflow-hidden rounded-sm aspect-square md:aspect-[4/3]">
         <img src="Assets/drainage-pipe-install-1.jpg" alt="" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
-      <div class="gallery-item relative overflow-hidden rounded-sm aspect-[4/3]">
+      <div class="gallery-item relative overflow-hidden rounded-sm aspect-square md:aspect-[4/3]">
         <img src="Assets/rural-beach-boat-ramp-1.jpg" alt="" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
-      <div class="gallery-item relative overflow-hidden rounded-sm aspect-[3/4] md:aspect-[3/4] md:row-span-2">
+      <div class="gallery-item relative overflow-hidden rounded-sm aspect-square md:aspect-[3/4] md:row-span-2">
         <img src="Assets/machinery-branded-fleet-1.jpg" alt="" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
-      <div class="gallery-item relative overflow-hidden rounded-sm aspect-[4/3]">
+      <div class="gallery-item relative overflow-hidden rounded-sm aspect-square md:aspect-[4/3]">
         <img src="Assets/retaining-wall-stone-backyard-1.jpg" alt="" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
-      <div class="gallery-item relative overflow-hidden rounded-sm aspect-[4/3]">
+      <div class="gallery-item relative overflow-hidden rounded-sm aspect-square md:aspect-[4/3]">
         <img src="Assets/site-prep-footings-aerial-1.jpg" alt="" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
@@ -674,6 +687,24 @@
 </footer>
 
 <script>
+  (function () {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('mobile-menu-icon-open');
+    const iconClose = document.getElementById('mobile-menu-icon-close');
+    if (btn && menu) {
+      const setOpen = (open) => {
+        menu.classList.toggle('hidden', !open);
+        iconOpen.classList.toggle('hidden', open);
+        iconClose.classList.toggle('hidden', !open);
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      };
+      btn.addEventListener('click', () => setOpen(menu.classList.contains('hidden')));
+      menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    }
+  })();
+
   (function () {
     const nav = document.getElementById('site-nav');
     if (!nav) return;

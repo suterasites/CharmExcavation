@@ -1,3 +1,11 @@
 node_modules/
 temporary screenshots/
 .vercel/
+
+# Tailwind standalone CLI binary (48 MiB, downloadable, should not be deployed).
+# Config + input.css are tracked so the build is reproducible:
+#   curl -sL -o build/tailwindcss https://github.com/tailwindlabs/tailwindcss/releases/download/v3.4.17/tailwindcss-macos-arm64
+#   chmod +x build/tailwindcss
+#   ./build/tailwindcss -c build/tailwind.config.js -i build/input.css -o styles.css --minify
+build/tailwindcss
+build/tailwindcss-*

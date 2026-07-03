@@ -17,6 +17,9 @@ const mimeTypes = {
   '.json': 'application/json',
   '.ico': 'image/x-icon',
   '.webp': 'image/webp',
+  '.mp4': 'video/mp4',
+  '.m4v': 'video/mp4',
+  '.mov': 'video/quicktime',
 };
 
 const server = createServer(async (req, res) => {

@@ -118,6 +118,10 @@
   .gallery-tile:hover { transform:scale(1.015); }
   .gallery-tile:hover img { transform:scale(1.08); }
   .gallery-tile.hide { display:none; }
+  .gallery-tile-video video { display:block; background:#14110f; }
+  .video-badge { position:absolute; top:10px; right:10px; z-index:2; display:flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:9999px; background:rgba(10,8,7,0.55); border:1px solid rgba(217,174,78,0.5); color:#d9ae4e; backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); pointer-events:none; }
+  .video-badge svg { width:14px; height:14px; margin-left:1px; }
+  @media (prefers-reduced-motion: reduce) { .gallery-tile-video video { pointer-events:auto; } }
 </style>
 </head>
 <body class="bg-char-950 text-cream">
@@ -198,11 +202,11 @@
 
     <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
       <div class="gallery-tile relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="retaining"><img src="/Assets/retaining-wall-stone-terraced-1.webp" width="1200" height="1600" alt="Terraced stacked stone retaining wall under construction in South East Melbourne" class="w-full h-full object-cover" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div></div>
-      <div class="gallery-tile relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="retaining"><img src="/Assets/retaining-wall-stone-excavator-1.webp" width="1080" height="1920" alt="Excavator working beside a new stacked stone retaining wall in South East Melbourne" class="w-full h-full object-cover" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div></div>
-      <div class="gallery-tile relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="retaining"><img src="/Assets/retaining-wall-stone-hillside-1.webp" width="1080" height="1920" alt="Long stacked stone retaining wall running along a hillside in South East Melbourne" class="w-full h-full object-cover" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div></div>
+      <div class="gallery-tile gallery-tile-video relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="retaining"><video class="w-full h-full object-cover" muted loop playsinline preload="none" poster="/Assets/retaining-wall-stone-excavator-1.jpg" aria-label="Video: excavator working beside a new stacked stone retaining wall in South East Melbourne" src="/Assets/retaining-wall-stone-excavator-1.mp4"></video><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent pointer-events-none"></div><span class="video-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="gallery-tile gallery-tile-video relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="retaining"><video class="w-full h-full object-cover" muted loop playsinline preload="none" poster="/Assets/retaining-wall-stone-hillside-1.jpg" aria-label="Video: long stacked stone retaining wall running along a hillside in South East Melbourne" src="/Assets/retaining-wall-stone-hillside-1.mp4"></video><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent pointer-events-none"></div><span class="video-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
       <div class="gallery-tile relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="retaining"><img src="/Assets/retaining-wall-sleeper-membrane-1.webp" width="1200" height="1600" alt="Concrete sleeper retaining wall with drainage membrane during construction in South East Melbourne" class="w-full h-full object-cover" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div></div>
-      <div class="gallery-tile relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="rural"><img src="/Assets/landscaping-levelled-block-1.webp" width="1080" height="1920" alt="Levelled and graded building block beside a new home ready for landscaping in South East Melbourne" class="w-full h-full object-cover" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div></div>
-      <div class="gallery-tile relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="rural"><img src="/Assets/landscaping-fenceline-yard-1.webp" width="1080" height="1920" alt="New boundary fence and block retaining wall along a levelled backyard in South East Melbourne" class="w-full h-full object-cover" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div></div>
+      <div class="gallery-tile gallery-tile-video relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="rural"><video class="w-full h-full object-cover" muted loop playsinline preload="none" poster="/Assets/landscaping-levelled-block-1.jpg" aria-label="Video: levelled and graded building block beside a new home ready for landscaping in South East Melbourne" src="/Assets/landscaping-levelled-block-1.mp4"></video><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent pointer-events-none"></div><span class="video-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
+      <div class="gallery-tile gallery-tile-video relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="rural"><video class="w-full h-full object-cover" muted loop playsinline preload="none" poster="/Assets/landscaping-fenceline-yard-1.jpg" aria-label="Video: new boundary fence and block retaining wall along a levelled backyard in South East Melbourne" src="/Assets/landscaping-fenceline-yard-1.mp4"></video><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent pointer-events-none"></div><span class="video-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span></div>
       <div class="gallery-tile relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="site-prep"><img src="/Assets/demolition-front-wall-breaker-1.webp" width="900" height="1200" alt="" class="w-full h-full object-cover" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div></div>
       <div class="gallery-tile relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="rural"><img src="/Assets/rural-hillside-sunset-1.webp" width="900" height="1200" alt="" class="w-full h-full object-cover" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div></div>
       <div class="gallery-tile relative overflow-hidden rounded-sm aspect-[4/3]" data-cat="machinery"><img src="/Assets/machinery-charm-branded-fleet-1.webp" width="1179" height="1554" alt="" class="w-full h-full object-cover" loading="lazy"/><div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div></div>
@@ -303,6 +307,25 @@
         });
       });
     });
+  })();
+
+  // Gallery videos: autoplay muted loops only while in view (pause off-screen to save data)
+  (function () {
+    const vids = document.querySelectorAll('.gallery-tile-video video');
+    if (!vids.length) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      vids.forEach(v => { v.controls = true; v.preload = 'metadata'; });
+      document.querySelectorAll('.gallery-tile-video .video-badge').forEach(b => b.remove());
+      return;
+    }
+    if (!('IntersectionObserver' in window)) { vids.forEach(v => v.play().catch(() => {})); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.play().catch(() => {});
+        else e.target.pause();
+      });
+    }, { threshold: 0.35 });
+    vids.forEach(v => io.observe(v));
   })();
 </script>
 </body>

@@ -119,6 +119,23 @@
   .mobile-services-panel.open { max-height:520px; }
   .mobile-services-chev { transition:transform 240ms; }
 </style>
+  <!-- Sutera lead events (GA4) -->
+  <script>/* SUTERA_LEAD_EVENTS */
+  (function(){
+    function ev(n, p){ if (typeof window.gtag === 'function') { window.gtag('event', n, Object.assign({transport_type:'beacon'}, p||{})); } }
+    document.addEventListener('click', function(e){
+      var a = e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
+      if (a) ev('click_to_call', { link_url: a.getAttribute('href') });
+    }, true);
+    document.addEventListener('submit', function(e){
+      var f = e.target;
+      if (!f || f.tagName !== 'FORM' || f.hasAttribute('data-no-lead')) return;
+      var action = f.getAttribute('action') || '';
+      var isLead = /formspree/i.test(action) || f.querySelector('input[type="email"], input[type="tel"], textarea');
+      if (isLead) ev('generate_lead', { form_id: f.id || f.getAttribute('name') || 'contact' });
+    }, true);
+  })();
+  </script>
 </head>
 <body class="bg-char-950 text-cream">
 <a href="#main" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" onfocus="this.style.cssText='position:fixed;top:12px;left:12px;width:auto;height:auto;background:#0a0807;color:#f5efe2;padding:8px 16px;border-radius:4px;z-index:100;text-decoration:none;font-weight:600;'" onblur="this.style.cssText='position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;'">Skip to main content</a>

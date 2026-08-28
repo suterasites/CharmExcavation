@@ -13,199 +13,271 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/about.html</loc>
+    <loc>https://charmexcavation.com.au/about</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services.html</loc>
+    <loc>https://charmexcavation.com.au/services</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/gallery.html</loc>
+    <loc>https://charmexcavation.com.au/gallery</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/contact.html</loc>
+    <loc>https://charmexcavation.com.au/contact</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/site-preparation-demolition.html</loc>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving.html</loc>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-dandenong</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-cranbourne</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-berwick</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-narre-warren</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-pakenham</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-officer</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-clyde</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-clyde-north</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-frankston</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-hallam</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-hampton-park</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/site-preparation-demolition-endeavour-hills</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-dandenong.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-dandenong</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-cranbourne.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-cranbourne</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-berwick.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-berwick</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-narre-warren.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-narre-warren</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-pakenham.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-pakenham</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-officer.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-officer</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-clyde.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-clyde</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-clyde-north.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-clyde-north</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-frankston.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-frankston</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-hallam.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-hallam</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-hampton-park.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-hampton-park</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-endeavour-hills.html</loc>
+    <loc>https://charmexcavation.com.au/services/excavation-earthmoving-endeavour-hills</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-dandenong.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-dandenong</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-cranbourne.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-cranbourne</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-berwick.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-berwick</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-narre-warren.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-narre-warren</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-pakenham.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-pakenham</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-officer.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-officer</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-clyde.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-clyde</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-clyde-north.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-clyde-north</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-frankston.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-frankston</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-hallam.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-hallam</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-hampton-park.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-hampton-park</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/civil-drainage-endeavour-hills.html</loc>
+    <loc>https://charmexcavation.com.au/services/civil-drainage-endeavour-hills</loc>
     <lastmod>2026-08-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/retaining-walls.html</loc>
+    <loc>https://charmexcavation.com.au/services/retaining-walls</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/services/landscaping-rural.html</loc>
+    <loc>https://charmexcavation.com.au/services/landscaping-rural</loc>
     <lastmod>2026-05-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -217,7 +289,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://charmexcavation.com.au/privacy.html</loc>
+    <loc>https://charmexcavation.com.au/privacy</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

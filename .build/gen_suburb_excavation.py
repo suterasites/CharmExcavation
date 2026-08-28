@@ -15,6 +15,11 @@ services/excavation-earthmoving-<suburb>.html
 House note: compiled-Tailwind site (styles.css). Only utility classes already in
 the base page are reused; the Areas/FAQ blocks lean on the page's own scoped
 classes (sub-card etc.), so nothing new needs compiling.
+
+URL note: Cloudflare Pages 308-redirects /page.html to /page, so every canonical,
+sitemap <loc> and internal href on this site is written WITHOUT the .html extension.
+Emitting .html here would point the canonical at a URL that redirects, and Google
+indexes both forms and splits the ranking signal between them.
 """
 
 import json
@@ -212,7 +217,7 @@ def strip_areas(html):
 
 
 def json_ld(sub):
-    url = f"{BASE}/services/excavation-earthmoving-{sub['slug']}.html"
+    url = f"{BASE}/services/excavation-earthmoving-{sub['slug']}"
     name = sub["name"]
     area = [
         {"@type": "City", "name": name},
@@ -261,8 +266,8 @@ def json_ld(sub):
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE}/"},
-                {"@type": "ListItem", "position": 2, "name": "Services", "item": f"{BASE}/services.html"},
-                {"@type": "ListItem", "position": 3, "name": "Excavation & Earthmoving", "item": f"{BASE}/services/excavation-earthmoving.html"},
+                {"@type": "ListItem", "position": 2, "name": "Services", "item": f"{BASE}/services"},
+                {"@type": "ListItem", "position": 3, "name": "Excavation & Earthmoving", "item": f"{BASE}/services/excavation-earthmoving"},
                 {"@type": "ListItem", "position": 4, "name": name, "item": url},
             ],
         },
@@ -306,7 +311,7 @@ def areas_section(active_slug=None):
     suburb (on its own page) renders as a non-linked gold tile."""
     tiles = []
     for s in SUBURBS:
-        href = f"/services/excavation-earthmoving-{s['slug']}.html"
+        href = f"/services/excavation-earthmoving-{s['slug']}"
         if s["slug"] == active_slug:
             tiles.append(
                 f'<span class="sub-card bg-char-900 rounded-sm px-5 py-4 font-sport text-sm tracking-[0.14em] uppercase text-gold-400 border-gold-400/40">{s["name"]}</span>'
@@ -337,7 +342,7 @@ def build_page(sub):
     html = strip_areas(open(PARENT, encoding="utf-8").read())
     name = sub["name"]
     slug = sub["slug"]
-    url = f"{BASE}/services/excavation-earthmoving-{slug}.html"
+    url = f"{BASE}/services/excavation-earthmoving-{slug}"
 
     # -- head --
     html = rep(html,
@@ -350,7 +355,7 @@ def build_page(sub):
         '<meta name="geo.placename" content="Melbourne">',
         f'<meta name="geo.placename" content="{name}">', "geo")
     html = rep(html,
-        '<link rel="canonical" href="https://charmexcavation.com.au/services/excavation-earthmoving.html">',
+        '<link rel="canonical" href="https://charmexcavation.com.au/services/excavation-earthmoving">',
         f'<link rel="canonical" href="{url}">', "canonical")
     # open graph
     html = rep(html,
@@ -360,7 +365,7 @@ def build_page(sub):
         '<meta property="og:description" content="Bulk earthmoving, pits, trenches and complete excavation across Melbourne\'s South East. Mini-ex through to 5-tonne. Small-machine access for tight sites.">',
         f'<meta property="og:description" content="{sub["meta"]}">', "og:desc")
     html = rep(html,
-        '<meta property="og:url" content="https://charmexcavation.com.au/services/excavation-earthmoving.html">',
+        '<meta property="og:url" content="https://charmexcavation.com.au/services/excavation-earthmoving">',
         f'<meta property="og:url" content="{url}">', "og:url")
     # twitter
     html = rep(html,
@@ -377,19 +382,19 @@ def build_page(sub):
 
     # -- visible breadcrumb --
     html = rep(html,
-        '''    <li><a href="/services.html" class="hover:text-gold-400">Services</a></li>
+        '''    <li><a href="/services" class="hover:text-gold-400">Services</a></li>
     <li aria-hidden="true">/</li>
     <li aria-current="page" class="text-cream/90">Excavation & Earthmoving</li>''',
-        f'''    <li><a href="/services.html" class="hover:text-gold-400">Services</a></li>
+        f'''    <li><a href="/services" class="hover:text-gold-400">Services</a></li>
     <li aria-hidden="true">/</li>
-    <li><a href="/services/excavation-earthmoving.html" class="hover:text-gold-400">Excavation & Earthmoving</a></li>
+    <li><a href="/services/excavation-earthmoving" class="hover:text-gold-400">Excavation & Earthmoving</a></li>
     <li aria-hidden="true">/</li>
     <li aria-current="page" class="text-cream/90">{name}</li>''', "breadcrumb")
 
     # -- hero eyebrow / label / h1 / paragraph --
     html = rep(html,
-        '<div class="flex items-center gap-4 mb-6 text-xs font-sport tracking-[0.25em] uppercase text-cream/50"><a href="/services.html" class="hover:text-gold-400 transition">Services</a><span>/</span><span class="text-gold-400">Excavation & Earthmoving</span></div>',
-        f'<div class="flex items-center gap-4 mb-6 text-xs font-sport tracking-[0.25em] uppercase text-cream/50"><a href="/services/excavation-earthmoving.html" class="hover:text-gold-400 transition">Excavation & Earthmoving</a><span>/</span><span class="text-gold-400">{name}</span></div>', "hero-eyebrow")
+        '<div class="flex items-center gap-4 mb-6 text-xs font-sport tracking-[0.25em] uppercase text-cream/50"><a href="/services" class="hover:text-gold-400 transition">Services</a><span>/</span><span class="text-gold-400">Excavation & Earthmoving</span></div>',
+        f'<div class="flex items-center gap-4 mb-6 text-xs font-sport tracking-[0.25em] uppercase text-cream/50"><a href="/services/excavation-earthmoving" class="hover:text-gold-400 transition">Excavation & Earthmoving</a><span>/</span><span class="text-gold-400">{name}</span></div>', "hero-eyebrow")
     html = rep(html,
         '<span class="font-sport text-xs tracking-[0.3em] uppercase text-gold-400">Service</span>',
         f'<span class="font-sport text-xs tracking-[0.3em] uppercase text-gold-400">{name}, SE Melbourne</span>', "hero-label")

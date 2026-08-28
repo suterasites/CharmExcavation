@@ -20,6 +20,11 @@ classes (sub-card etc.), so nothing new needs compiling.
 Coverage note: the filename must carry the clients.yaml term for this service
 ("drainage") plus the suburb slug, or Apps/seo-hq's coverage matrix will not
 count the page. civil-drainage-<suburb> satisfies both.
+
+URL note: Cloudflare Pages 308-redirects /page.html to /page, so every canonical,
+sitemap <loc> and internal href on this site is written WITHOUT the .html extension.
+Emitting .html here would point the canonical at a URL that redirects, and Google
+indexes both forms and splits the ranking signal between them.
 """
 
 import json
@@ -219,7 +224,7 @@ def strip_areas(html):
 
 
 def json_ld(sub):
-    url = f"{BASE}/services/civil-drainage-{sub['slug']}.html"
+    url = f"{BASE}/services/civil-drainage-{sub['slug']}"
     name = sub["name"]
     area = [
         {"@type": "City", "name": name},
@@ -268,8 +273,8 @@ def json_ld(sub):
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{BASE}/"},
-                {"@type": "ListItem", "position": 2, "name": "Services", "item": f"{BASE}/services.html"},
-                {"@type": "ListItem", "position": 3, "name": "Civil & Drainage", "item": f"{BASE}/services/civil-drainage.html"},
+                {"@type": "ListItem", "position": 2, "name": "Services", "item": f"{BASE}/services"},
+                {"@type": "ListItem", "position": 3, "name": "Civil & Drainage", "item": f"{BASE}/services/civil-drainage"},
                 {"@type": "ListItem", "position": 4, "name": name, "item": url},
             ],
         },
@@ -313,7 +318,7 @@ def areas_section(active_slug=None):
     (on its own page) renders as a non-linked gold tile."""
     tiles = []
     for s in SUBURBS:
-        href = f"/services/civil-drainage-{s['slug']}.html"
+        href = f"/services/civil-drainage-{s['slug']}"
         if s["slug"] == active_slug:
             tiles.append(
                 f'<span class="sub-card bg-char-900 rounded-sm px-5 py-4 font-sport text-sm tracking-[0.14em] uppercase text-gold-400 border-gold-400/40">{s["name"]}</span>'
@@ -344,7 +349,7 @@ def build_page(sub):
     html = strip_areas(open(PARENT, encoding="utf-8").read())
     name = sub["name"]
     slug = sub["slug"]
-    url = f"{BASE}/services/civil-drainage-{slug}.html"
+    url = f"{BASE}/services/civil-drainage-{slug}"
     title = f"Civil Works & Drainage {name} | Charm Excavation"
 
     # Head lengths are audited (title 40-65, meta description 120-170 in
@@ -365,7 +370,7 @@ def build_page(sub):
         '<meta name="geo.placename" content="Melbourne">',
         f'<meta name="geo.placename" content="{name}">', "geo")
     html = rep(html,
-        '<link rel="canonical" href="https://charmexcavation.com.au/services/civil-drainage.html">',
+        '<link rel="canonical" href="https://charmexcavation.com.au/services/civil-drainage">',
         f'<link rel="canonical" href="{url}">', "canonical")
     # open graph
     html = rep(html,
@@ -375,7 +380,7 @@ def build_page(sub):
         '<meta property="og:description" content="Civil construction, stormwater, site drainage, septic installs and crossovers across Melbourne\'s South East. Built to the engineer\'s plan.">',
         f'<meta property="og:description" content="{sub["meta"]}">', "og:desc")
     html = rep(html,
-        '<meta property="og:url" content="https://charmexcavation.com.au/services/civil-drainage.html">',
+        '<meta property="og:url" content="https://charmexcavation.com.au/services/civil-drainage">',
         f'<meta property="og:url" content="{url}">', "og:url")
     # twitter
     html = rep(html,
@@ -392,19 +397,19 @@ def build_page(sub):
 
     # -- visible breadcrumb --
     html = rep(html,
-        '''    <li><a href="/services.html" class="hover:text-gold-400">Services</a></li>
+        '''    <li><a href="/services" class="hover:text-gold-400">Services</a></li>
     <li aria-hidden="true">/</li>
     <li aria-current="page" class="text-cream/90">Civil & Drainage</li>''',
-        f'''    <li><a href="/services.html" class="hover:text-gold-400">Services</a></li>
+        f'''    <li><a href="/services" class="hover:text-gold-400">Services</a></li>
     <li aria-hidden="true">/</li>
-    <li><a href="/services/civil-drainage.html" class="hover:text-gold-400">Civil & Drainage</a></li>
+    <li><a href="/services/civil-drainage" class="hover:text-gold-400">Civil & Drainage</a></li>
     <li aria-hidden="true">/</li>
     <li aria-current="page" class="text-cream/90">{name}</li>''', "breadcrumb")
 
     # -- hero eyebrow / label / h1 / paragraph --
     html = rep(html,
-        '<div class="flex items-center gap-4 mb-6 text-xs font-sport tracking-[0.25em] uppercase text-cream/50"><a href="/services.html" class="hover:text-gold-400 transition">Services</a><span>/</span><span class="text-gold-400">Civil & Drainage</span></div>',
-        f'<div class="flex items-center gap-4 mb-6 text-xs font-sport tracking-[0.25em] uppercase text-cream/50"><a href="/services/civil-drainage.html" class="hover:text-gold-400 transition">Civil & Drainage</a><span>/</span><span class="text-gold-400">{name}</span></div>', "hero-eyebrow")
+        '<div class="flex items-center gap-4 mb-6 text-xs font-sport tracking-[0.25em] uppercase text-cream/50"><a href="/services" class="hover:text-gold-400 transition">Services</a><span>/</span><span class="text-gold-400">Civil & Drainage</span></div>',
+        f'<div class="flex items-center gap-4 mb-6 text-xs font-sport tracking-[0.25em] uppercase text-cream/50"><a href="/services/civil-drainage" class="hover:text-gold-400 transition">Civil & Drainage</a><span>/</span><span class="text-gold-400">{name}</span></div>', "hero-eyebrow")
     html = rep(html,
         '<span class="font-sport text-xs tracking-[0.3em] uppercase text-gold-400">Service</span>',
         f'<span class="font-sport text-xs tracking-[0.3em] uppercase text-gold-400">{name}, SE Melbourne</span>', "hero-label")
@@ -452,7 +457,7 @@ def patch_sitemap():
     """Add any missing suburb URLs, straight after the parent service entry."""
     xml = open(SITEMAP, encoding="utf-8").read()
     anchor = f"""  <url>
-    <loc>{BASE}/services/civil-drainage.html</loc>"""
+    <loc>{BASE}/services/civil-drainage</loc>"""
     if anchor not in xml:
         raise SystemExit("sitemap: parent civil-drainage entry not found")
     end = xml.index("</url>", xml.index(anchor)) + len("</url>\n")
@@ -460,7 +465,7 @@ def patch_sitemap():
     added = []
     block = ""
     for s in SUBURBS:
-        loc = f"{BASE}/services/civil-drainage-{s['slug']}.html"
+        loc = f"{BASE}/services/civil-drainage-{s['slug']}"
         if f"<loc>{loc}</loc>" in xml:
             continue
         added.append(s["slug"])

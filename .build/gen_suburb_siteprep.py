@@ -27,6 +27,16 @@ URL note: Cloudflare Pages 308-redirects /page.html to /page, so every canonical
 sitemap <loc> and internal href on this site is written WITHOUT the .html extension.
 Emitting .html here would point the canonical at a URL that redirects, and Google
 indexes both forms and splits the ranking signal between them.
+
+Depth note (2026-09-18): GSC URL Inspection returned "Crawled - currently not
+indexed" for the three pages Google had actually read (Cranbourne, Clyde North,
+Hampton Park) at ~450 body words with ~43% of sentences shared with siblings - a
+thin-or-duplicate verdict that no amount of re-requesting changes. A suburb in DEEP
+gets an extra "On the ground" section (intro + three cards of suburb-specific
+detail + cross-links to the same suburb's excavation and drainage pages) and a
+fourth FAQ, and its sitemap lastmod is bumped to LASTMOD_DEEP. Same rule as the
+rest of the copy: real ground, real housing stock, real permits - no invented jobs.
+Add the other nine to DEEP if Google hands them the same verdict once crawled.
 """
 
 import json
@@ -38,6 +48,7 @@ BASE = "https://charmexcavation.com.au"
 PARENT = os.path.join(SERVICES, "site-preparation-demolition.html")
 SITEMAP = os.path.join(ROOT, "sitemap.xml")
 LASTMOD = "2026-08-28"
+LASTMOD_DEEP = "2026-09-18"   # pages in DEEP, so Google sees the change
 
 # ── Per-suburb data ────────────────────────────────────────────────────────
 # name/slug + localised copy. No fabricated past-project claims - framed as
@@ -201,6 +212,73 @@ SUBURBS = [
     },
 ]
 
+# ── Suburb depth (see the Depth note at the top) ──────────────────────────
+# "intro" sits under the section heading; "cards" are (heading, paragraphs);
+# "faq" is appended as a fourth question. Everything here is checkable local
+# fact - ground, housing stock, council process - never a claimed past job.
+DEEP = {
+    "cranbourne": {
+        "intro": "Cranbourne is two different jobs depending on which side of town you are on. The older streets around the centre are established blocks, often on their second or third owner, where the site prep starts with taking something out. The newer stages in Cranbourne East, West and North are titled lots with a levels plan and nothing on them yet. Same machines, different day.",
+        "cards": [
+            ("The older blocks", [
+                "Around the centre of Cranbourne the housing runs from post-war through to the eighties on generous blocks, and a lot of it is now being replaced with a new home or a dual occupancy. Our part starts once the house is down: break out the old slab, footings and driveway, take out the sheds and the stumps, strip the block, then cut and trim the new pad to the plan levels.",
+                "Anything built before 1990 can carry asbestos, so that is removed by a licensed removalist before we start, and the demolition itself sits under a permit from a registered building surveyor.",
+            ]),
+            ("The ground", [
+                "Cranbourne sits on the sand belt, the same sandy ground the botanic gardens were planted on and the quarries around town have dug for decades. Sand cuts fast but will not stand up in a steep face, so batters get laid back further than they would in clay.",
+                "Head east toward Clyde and the sand gives way to heavier clay, and across the newer estates most of what the machine touches is developer fill placed over the original profile. We work out which of the three we are in before the cut, because each one changes how deep we go and what the pad needs under it.",
+            ]),
+            ("Before the machine arrives", [
+                "On a knock-down in Cranbourne there is paperwork that has to be done before anyone digs, and it is worth knowing the list up front. A demolition permit from a registered building surveyor, which includes the City of Casey's heritage check. A Casey asset protection permit so the footpath, kerb and nature strip are covered while trucks are crossing them. Power and gas abolished at the street, and water and sewer capped at the boundary.",
+                "On a bare estate lot none of that applies. The job is the soil report, the levels plan and a date.",
+            ]),
+        ],
+        "faq": ("Do you do the site prep for a knock-down rebuild in Cranbourne?", "Yes, from the point the house is down. Breaking out the old slab and footings, removing sheds, stumps and the driveway, stripping the block and cutting the new pad to the plan levels are all part of the job, in the older streets of Cranbourne as well as the estates."),
+    },
+    "clyde-north": {
+        "intro": "Clyde North is the growth corridor at full speed: titled lots coming off the developers along Thompsons Road, Berwick-Cranbourne Road, Pound Road and Grices Road, and a builder waiting on every one of them. Nothing here has an old house to take out, so the entire job is getting the pad to the engineer's levels on the day it is needed.",
+        "cards": [
+            ("The lots", [
+                "A Clyde North lot arrives with a soil report, a cut and fill plan from the developer and a builder's site plan showing the finished floor level. The developer has usually already moved a lot of dirt to get the estate to its road levels, which is why one lot can be sitting on a metre of placed fill and the one next door on natural ground.",
+                "We read the plan before the cut so the pad is not sitting on something the slab engineer did not allow for.",
+            ]),
+            ("The clay", [
+                "The ground out here is heavy reactive clay, and Clyde North soil reports routinely come back Class H1 or H2, which is a large part of why the slabs cost what they do. That clay swells when it is wet and shrinks when it dries, so the site cut has to match the report: strip the topsoil to the depth it says, cut to the levels, and compact any fill under the pad properly rather than pushing loose dirt into a low corner.",
+                "A pad that is cut short or built on soft fill is where slab movement starts, and it shows up long after we have left.",
+            ]),
+            ("Working inside an estate", [
+                "New estates run to rules. The road has to stay clean, so mud tracked out of the lot is a problem for the builder and for us, and sediment control stays in place while we are cutting. The City of Casey wants an asset protection permit in place before building works start, because the kerb, footpath and crossover are council assets and a loaded truck over them is the most likely thing to break them.",
+                "The lots either side are usually at some stage of a build too, so where the spoil goes and how the truck gets in and out is worked out before the day, not on it.",
+            ]),
+        ],
+        "faq": ("My soil report says Class H. Does that change the site cut?", "It changes what the cut has to hit rather than how we do it. The slab has been designed for the ground in that report, so we strip to the depth it calls for, cut to the plan levels and compact any fill under the pad. Getting that right on a Class H site matters more than on sand, because the clay moves with the seasons and a short cut shows up as slab movement later."),
+    },
+    "hampton-park": {
+        "intro": "Hampton Park was built out through the eighties and nineties, so almost every block already has a house on it, a fence on either side and something at the back that has to go. The site prep here is the confined kind: a compact machine through the side gate, a pad cut in a yard with a neighbour on each boundary, and the material carried out the same way it came in.",
+        "cards": [
+            ("The blocks", [
+                "These are family-sized lots, typically six or seven hundred square metres, with a brick veneer home from the original estate build, a concrete driveway, and a shed or a carport on a slab at the rear. The work is extensions, second dwellings and granny flats, sheds, pools, and a growing number of knock-down rebuilds and dual occupancies as the original houses reach forty years old.",
+                "A house comes down under a demolition permit with a registered demolisher. We clear, break out and cut once it is down, or come straight to the back yard when the house is staying put.",
+            ]),
+            ("What is under an older block", [
+                "A forty-year-old block has history in it. Old footings and slab edges from a shed that was replaced once already, a buried path, the original stormwater run to the street, and sewer and drainage lines laid long before anyone thought about a granny flat over the top of them. We locate services through Before You Dig Australia before we start and work carefully around anything the plans do not show.",
+                "The ground itself is the corridor's reactive clay, so a pad for an extension or a granny flat is cut to the engineer's depth and compacted, because a pad that moves under a small building is just as expensive as one under a big one.",
+            ]),
+            ("Getting in and out", [
+                "Access decides the job in Hampton Park. A standard side gate is around a metre wide, which our compact excavator is sized for, and the overhead service line to the house is the thing to look up for before the boom goes past it. Spoil and broken concrete go out through the same gap and straight onto the truck, so nothing sits on the nature strip.",
+                "Where a truck has to cross the footpath or the kerb, the City of Casey asks for an asset protection permit first, and a neighbour's fence is only ever touched with the neighbour knowing.",
+            ]),
+        ],
+        "faq": ("Can you do the site prep for a knock-down rebuild in Hampton Park?", "Yes, once the house is down. Breaking out the old slab, footings and driveway, removing sheds and stumps, stripping the block and cutting the new pad to the plan levels is the same job we do behind the house, just with more room to do it."),
+    },
+}
+
+for _s in SUBURBS:
+    _d = DEEP.get(_s["slug"])
+    if _d:
+        _s["deep"] = _d
+        _s["faqs"] = list(_s["faqs"]) + [_d["faq"]]
+
 BY_SLUG = {s["slug"]: s for s in SUBURBS}
 
 
@@ -301,15 +379,53 @@ def faq_section(sub):
       </article>'''
         for q, a in sub["faqs"]
     )
+    # Four questions read as 2x2 on tablet and a row of four on desktop; three
+    # stay a row of three. Every class here is already in the compiled styles.css.
+    grid_cls = "grid md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6" if len(sub["faqs"]) == 4 else "grid md:grid-cols-3 gap-5 lg:gap-6"
     return f'''<section id="faq" class="relative bg-char-950 overflow-hidden">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
     <div class="max-w-2xl mb-12">
       <div class="flex items-center gap-3 mb-5"><span class="h-px w-10 bg-gold-400"></span><span class="font-sport text-xs tracking-[0.3em] uppercase text-gold-400">{sub['name']} questions</span></div>
       <h2 class="font-display text-4xl md:text-5xl uppercase leading-[0.92] text-cream">Common <span class="text-gold-400">questions.</span></h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-5 lg:gap-6">
+    <div class="{grid_cls}">
 {cards}
     </div>
+  </div>
+</section>
+'''
+
+
+def deep_section(sub):
+    """Suburb-specific depth block (only for slugs in DEEP). Sits between Other
+    services (char-950) and the FAQ (char-950), on char-900 so the background
+    alternation holds. Cards mirror the capabilities grid without the images."""
+    d = sub.get("deep")
+    if not d:
+        return ""
+    name, slug = sub["name"], sub["slug"]
+    cards = []
+    for i, (h, paras) in enumerate(d["cards"], 1):
+        body = "\n".join(f'        <p class="mt-3 text-sm text-cream/65 leading-relaxed">{p}</p>' for p in paras)
+        cards.append(f'''      <article class="sub-card bg-char-950 rounded-sm overflow-hidden p-7">
+        <div class="font-sport text-xs tracking-[0.25em] uppercase text-gold-400 mb-3">{i:02d}</div>
+        <h3 class="font-display text-2xl uppercase text-cream leading-tight">{h}</h3>
+{body}
+      </article>''')
+    grid = "\n".join(cards)
+    exc = f"/services/excavation-earthmoving-{slug}"
+    civ = f"/services/civil-drainage-{slug}"
+    return f'''<section id="on-the-ground" class="relative bg-char-900 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24">
+    <div class="max-w-3xl mb-12">
+      <div class="flex items-center gap-3 mb-5"><span class="h-px w-10 bg-gold-400"></span><span class="font-sport text-xs tracking-[0.3em] uppercase text-gold-400">On the ground in {name}</span></div>
+      <h2 class="font-display text-4xl md:text-5xl uppercase leading-[0.92] text-cream">What site prep looks like in <span class="text-gold-400">{name}.</span></h2>
+      <p class="mt-5 text-cream/70 leading-relaxed">{d["intro"]}</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5 lg:gap-6">
+{grid}
+    </div>
+    <p class="mt-10 text-sm text-cream/65 leading-relaxed">Also in {name}: <a href="{exc}" class="text-gold-400 hover:text-gold-300 transition">excavation and earthmoving</a> and <a href="{civ}" class="text-gold-400 hover:text-gold-300 transition">civil and drainage</a>.</p>
   </div>
 </section>
 '''
@@ -435,7 +551,7 @@ def build_page(sub):
 
     # -- insert FAQ + Areas before the CTA section --
     cta = '<section class="relative bg-burgundy-800 overflow-hidden">'
-    html = rep(html, cta, faq_section(sub) + "\n" + areas_section(slug) + "\n" + cta, "insert-faq-areas")
+    html = rep(html, cta, deep_section(sub) + faq_section(sub) + "\n" + areas_section(slug) + "\n" + cta, "insert-faq-areas")
 
     out = os.path.join(SERVICES, f"site-preparation-demolition-{slug}.html")
     open(out, "w", encoding="utf-8").write(html)
@@ -478,10 +594,26 @@ def patch_sitemap():
     <priority>0.7</priority>
   </url>
 """
-    if not block:
+    if block:
+        xml = xml[:end] + block + xml[end:]
+
+    # Deepened pages carry today's lastmod so a sitemap re-read sees the change.
+    bumped = []
+    for s in SUBURBS:
+        if not s.get("deep"):
+            continue
+        loc = f"{BASE}/services/site-preparation-demolition-{s['slug']}"
+        i = xml.index(f"<loc>{loc}</loc>")
+        j = xml.index("<lastmod>", i)
+        k = xml.index("</lastmod>", j)
+        if xml[j + len("<lastmod>"):k] != LASTMOD_DEEP:
+            xml = xml[:j] + f"<lastmod>{LASTMOD_DEEP}" + xml[k:]
+            bumped.append(s["slug"])
+
+    if not block and not bumped:
         return "sitemap: all suburb URLs already listed"
-    open(SITEMAP, "w", encoding="utf-8").write(xml[:end] + block + xml[end:])
-    return f"sitemap: added {len(added)} URLs"
+    open(SITEMAP, "w", encoding="utf-8").write(xml)
+    return f"sitemap: added {len(added)} URLs, lastmod bumped on {len(bumped)}"
 
 
 def main():

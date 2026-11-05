@@ -312,6 +312,7 @@
     .hero-row { position:relative; z-index:10; flex-direction:row; align-items:center; justify-content:space-between; gap:3rem; padding-top:2rem; padding-bottom:3rem; }
     .hero-copy { flex:1 1 auto; min-width:0; }
     .hero-copy::before { display:none; }
+    .hero-eyebrow-row { margin-bottom:1.5rem; }
     .hero-eyebrow-rule { display:block; }
     .hero-eyebrow { letter-spacing:.3em; }
     .hero-copy h1 { font-size:clamp(5.5rem, 8.1vw, 8.5rem); }
@@ -320,6 +321,7 @@
     .hero-cta a { padding-left:1.75rem; padding-right:1.75rem; letter-spacing:.14em; }
     .hero-lede-long, .hero-cta-long { display:inline; }
     .hero-backdrop, .hero-film-note { display:block; }
+    .hero-film-note { line-height:1.375; margin-top:.25rem; }
     .hero-film { position:relative; inset:auto; z-index:auto; flex:none; height:min(calc(100vh - 10rem), 30rem); height:min(calc(100svh - 10rem), 30rem); aspect-ratio:9/16; overflow:hidden; border-radius:2px; border:1px solid rgba(245,239,226,.14); box-shadow:0 30px 60px -20px rgba(0,0,0,.7); }
     .hero-film::after { background:linear-gradient(to top, rgba(10,8,7,.9) 0%, rgba(10,8,7,.45) 24%, transparent 44%); }
     .hero-film-caption { top:auto; bottom:1.1rem; left:1.1rem; right:1.1rem; }
@@ -474,7 +476,7 @@
 
   <div class="hero-row max-w-7xl mx-auto px-6 lg:px-10">
     <div class="hero-copy max-w-3xl">
-      <div class="flex items-center gap-3 mb-4 lg:mb-6">
+      <div class="hero-eyebrow-row flex items-center gap-3 mb-4">
         <span class="hero-eyebrow-rule h-px w-12 bg-gold-400"></span>
         <span class="hero-eyebrow font-sport text-xs uppercase text-gold-400">South East Melbourne - Est. Keysborough</span>
       </div>
@@ -507,7 +509,7 @@
       <figcaption class="hero-film-caption">
         <span class="font-sport text-xs tracking-[0.25em] uppercase text-gold-400">Project film</span>
         <span class="font-display text-2xl uppercase leading-tight">Brighton Beach</span>
-        <span class="hero-film-note text-sm text-cream/75 leading-snug">Bulk excavation on a tight block, from the first cut through drainage pits, an underground tank install and truck-loaded cart-away.</span>
+        <span class="hero-film-note text-sm text-cream/75">Bulk excavation on a tight block, from the first cut through drainage pits, an underground tank install and truck-loaded cart-away.</span>
       </figcaption>
       <button id="hero-film-sound" type="button" class="hero-film-sound font-sport" aria-pressed="false">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5 6 9H3v6h3l5 4V5zM15.5 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>

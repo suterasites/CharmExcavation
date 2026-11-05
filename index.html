@@ -115,6 +115,7 @@
 }
 </script>
 <link rel="stylesheet" href="/styles.css">
+<link rel="preload" as="image" href="/Assets/brighton-beach-hero-poster.webp" fetchpriority="high">
 <style>
   html { scroll-behavior: smooth; }
   body {
@@ -288,6 +289,47 @@
   .mobile-services-chev { transition: transform 240ms; }
   .sub-card { transition:transform 300ms cubic-bezier(.2,.9,.2,1.1), border-color 300ms; border:1px solid rgba(245,239,226,0.07); }
   .sub-card:hover { transform:translateY(-4px); border-color:rgba(217,174,78,0.35); }
+
+  /* Hero film. One <video>, placed by CSS so it only downloads once: behind the copy on a
+     phone, where the vertical cut fills the screen, and in its own column from lg up. */
+  .hero-row { display:flex; flex-direction:column; justify-content:flex-end; min-height:calc(100vh - 5rem); min-height:calc(100svh - 5rem); padding-top:2rem; padding-bottom:2.75rem; }
+  .hero-copy { position:relative; z-index:10; }
+  /* Phone scrim hangs off the copy, so it covers the words at any screen height */
+  .hero-copy::before { content:''; position:absolute; z-index:-1; left:-100vw; right:-100vw; top:-5.5rem; bottom:-2.75rem; pointer-events:none; background:linear-gradient(to bottom, rgba(10,8,7,0) 0, rgba(10,8,7,.8) 5.5rem, rgba(10,8,7,.95) 100%); }
+  .hero-eyebrow-rule { display:none; }
+  .hero-eyebrow { letter-spacing:.14em; }
+  .hero-lede { margin-top:1.25rem; }
+  .hero-cta { margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:.75rem; }
+  .hero-cta a { padding-left:1.1rem; padding-right:1.1rem; letter-spacing:.1em; }
+  .hero-lede-long, .hero-cta-long, .hero-backdrop, .hero-film-note { display:none; }
+  .hero-film { position:absolute; inset:0; z-index:2; margin:0; background:#0a0807; }
+  .hero-film::after { content:''; position:absolute; inset:0; pointer-events:none; background:linear-gradient(to bottom, rgba(10,8,7,.55) 0, rgba(10,8,7,.1) 12rem); }
+  .hero-film-caption { position:absolute; z-index:1; top:6.75rem; left:1.5rem; display:flex; flex-direction:column; gap:.1rem; color:#f5efe2; }
+  .hero-film-sound { position:absolute; z-index:1; top:6.75rem; right:1.5rem; display:inline-flex; align-items:center; gap:.5rem; min-height:2.75rem; padding:0 .85rem; background:rgba(10,8,7,.72); color:#f5efe2; border:1px solid rgba(245,239,226,.28); border-radius:2px; font-size:.7rem; letter-spacing:.16em; text-transform:uppercase; white-space:nowrap; cursor:pointer; transition:border-color 200ms, color 200ms; }
+  .hero-film-sound:hover { border-color:#d9ae4e; color:#d9ae4e; }
+  .hero-film-sound svg { width:1rem; height:1rem; flex:none; }
+  @media (min-width:1024px) {
+    .hero-row { position:relative; z-index:10; flex-direction:row; align-items:center; justify-content:space-between; gap:3rem; padding-top:2rem; padding-bottom:3rem; }
+    .hero-copy { flex:1 1 auto; min-width:0; }
+    .hero-copy::before { display:none; }
+    .hero-eyebrow-rule { display:block; }
+    .hero-eyebrow { letter-spacing:.3em; }
+    .hero-copy h1 { font-size:clamp(5.5rem, 8.1vw, 8.5rem); }
+    .hero-lede { margin-top:2rem; }
+    .hero-cta { margin-top:2.5rem; gap:1rem; }
+    .hero-cta a { padding-left:1.75rem; padding-right:1.75rem; letter-spacing:.14em; }
+    .hero-lede-long, .hero-cta-long { display:inline; }
+    .hero-backdrop, .hero-film-note { display:block; }
+    .hero-film { position:relative; inset:auto; z-index:auto; flex:none; height:min(calc(100vh - 10rem), 30rem); height:min(calc(100svh - 10rem), 30rem); aspect-ratio:9/16; overflow:hidden; border-radius:2px; border:1px solid rgba(245,239,226,.14); box-shadow:0 30px 60px -20px rgba(0,0,0,.7); }
+    .hero-film::after { background:linear-gradient(to top, rgba(10,8,7,.9) 0%, rgba(10,8,7,.45) 24%, transparent 44%); }
+    .hero-film-caption { top:auto; bottom:1.1rem; left:1.1rem; right:1.1rem; }
+    .hero-film-sound { top:.9rem; right:.9rem; }
+  }
+  @media (min-width:1280px) { .hero-film { height:min(calc(100vh - 10rem), 44rem); height:min(calc(100svh - 10rem), 44rem); } }
+
+  /* Book this service: a real link now, with room for a thumb */
+  .service-book { padding:.5rem 0; transition:color 200ms; }
+  .service-book:hover { color:#f5efe2; }
 </style>
   <!-- Sutera lead events (GA4) -->
   <script>/* SUTERA_LEAD_EVENTS */
@@ -423,40 +465,55 @@
 <main id="main">
 <!-- ============ HERO ============ -->
 <section class="relative min-h-screen hero-bg grain overflow-hidden pt-20">
-  <!-- Hero image backdrop -->
-  <div class="absolute inset-0 z-0">
-    <img src="Assets/machinery-branded-fleet-1.webp" width="1200" height="900" alt="Charm Excavation fleet on site" class="w-full h-full object-cover opacity-40" />
+  <!-- Hero image backdrop (from lg up: on a phone the film fills the hero) -->
+  <div class="hero-backdrop absolute inset-0 z-0">
+    <img src="Assets/machinery-branded-fleet-1.webp" width="1200" height="900" alt="Charm Excavation fleet on site" class="w-full h-full object-cover opacity-40" loading="lazy" />
     <div class="absolute inset-0 bg-gradient-to-r from-char-950 via-char-950/70 to-char-950/30"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-char-950 via-transparent to-char-950/40"></div>
   </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 pt-24 lg:pt-32 pb-24">
-    <div class="max-w-3xl">
-      <div class="flex items-center gap-3 mb-6">
-        <span class="h-px w-12 bg-gold-400"></span>
-        <span class="font-sport text-xs tracking-[0.3em] uppercase text-gold-400">South East Melbourne - Est. Keysborough</span>
+  <div class="hero-row max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="hero-copy max-w-3xl">
+      <div class="flex items-center gap-3 mb-4 lg:mb-6">
+        <span class="hero-eyebrow-rule h-px w-12 bg-gold-400"></span>
+        <span class="hero-eyebrow font-sport text-xs uppercase text-gold-400">South East Melbourne - Est. Keysborough</span>
       </div>
-      <h1 class="font-display text-[3.5rem] md:text-7xl lg:text-[7.5rem] xl:text-[8.5rem] leading-[0.88] uppercase text-cream">
+      <h1 class="font-display text-[3.5rem] md:text-7xl leading-[0.88] uppercase text-cream">
         Dig it.<br/>
         <span class="text-gold-400">Shape it.</span><br/>
         Build on it.
       </h1>
-      <p class="mt-8 text-lg md:text-xl text-cream/80 max-w-2xl leading-relaxed">
-        From backyard cuts to full civil jobs, we turn raw ground into ready sites
-        across Melbourne's South East. Owner-operated, fully insured, on time every time.
+      <p class="hero-lede text-lg md:text-xl text-cream/80 max-w-2xl leading-relaxed">
+        <span class="hero-lede-long">From backyard cuts to full civil jobs, we turn raw ground into ready sites
+        across Melbourne's South East. </span>Owner-operated, fully insured, on time every time.
       </p>
 
-      <div class="mt-10 flex flex-wrap gap-4">
+      <div class="hero-cta">
         <a href="#contact" class="inline-flex items-center gap-3 px-7 py-4 rounded-sm bg-burgundy-700 text-cream font-sport font-semibold tracking-[0.14em] uppercase text-sm cta-primary">
           Get a Free Quote
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
         <a href="#services" class="inline-flex items-center gap-3 px-7 py-4 rounded-sm bg-transparent text-cream font-sport font-semibold tracking-[0.14em] uppercase text-sm border border-cream/30 cta-secondary">
-          View Services
+          <span><span class="hero-cta-long">View </span>Services</span>
         </a>
       </div>
     </div>
 
+    <!-- Brighton Beach project film: plays muted on load, sound on request -->
+    <figure class="hero-film">
+      <video id="hero-film" class="w-full h-full object-cover" autoplay muted loop playsinline preload="auto" poster="/Assets/brighton-beach-hero-poster.webp" aria-label="Video: Charm Excavation bulk excavation and tank install on a Brighton Beach block">
+        <source src="/Assets/brighton-beach-hero.mp4" type="video/mp4" />
+      </video>
+      <figcaption class="hero-film-caption">
+        <span class="font-sport text-xs tracking-[0.25em] uppercase text-gold-400">Project film</span>
+        <span class="font-display text-2xl uppercase leading-tight">Brighton Beach</span>
+        <span class="hero-film-note text-sm text-cream/75 leading-snug">Bulk excavation on a tight block, from the first cut through drainage pits, an underground tank install and truck-loaded cart-away.</span>
+      </figcaption>
+      <button id="hero-film-sound" type="button" class="hero-film-sound font-sport" aria-pressed="false">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5 6 9H3v6h3l5 4V5zM15.5 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>
+        <span>Sound on</span>
+      </button>
+    </figure>
   </div>
 
   <!-- Diagonal stripe divider bottom -->
@@ -546,15 +603,15 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
       <!-- 1. Site Prep & Demolition -->
       <article class="service-card group relative overflow-hidden rounded-sm bg-char-900 border border-cream/5">
-        <div class="relative h-72 overflow-hidden">
-          <img src="Assets/site-prep-footings-aerial-1.webp" width="1170" height="876" alt="Site preparation work" class="service-img w-full h-full object-cover" />
+        <a href="/services/site-preparation-demolition" class="block relative h-72 overflow-hidden" aria-label="Site Preparation &amp; Demolition service">
+          <img src="Assets/demolition-slab-rubble-excavator-1.webp" width="1200" height="1600" alt="CAT mini excavator with broken concrete slabs and demolition rubble stacked on a house block" class="service-img w-full h-full object-cover" style="object-position:50% 80%" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-char-950 via-char-950/40 to-transparent"></div>
           <div class="absolute top-5 left-5 flex items-center gap-2">
             <span class="font-display text-5xl text-gold-400/90 leading-none">01</span>
           </div>
-        </div>
+        </a>
         <div class="p-7 lg:p-8">
-          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight">Site Preparation<br/>& Demolition</h3>
+          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight"><a href="/services/site-preparation-demolition" class="hover:text-gold-400 transition">Site Preparation<br/>& Demolition</a></h3>
           <p class="mt-3 text-cream/65 leading-relaxed">
             Clear it, cut it, trim it to spec. We prep the pad so the next trade doesn't lose a day.
           </p>
@@ -563,24 +620,24 @@
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Precision Final Trimming</li>
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Demolition & Site Clearing</li>
           </ul>
-          <div class="mt-7 flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
+          <a href="#contact" data-service="Site Preparation &amp; Demolition" aria-label="Book Site Preparation &amp; Demolition" class="service-book mt-7 inline-flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
             <span>Book this service</span>
             <svg class="service-arrow w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </div>
+          </a>
         </div>
       </article>
 
       <!-- 2. Excavation & Earthmoving -->
       <article class="service-card group relative overflow-hidden rounded-sm bg-char-900 border border-cream/5">
-        <div class="relative h-72 overflow-hidden">
+        <a href="/services/excavation-earthmoving" class="block relative h-72 overflow-hidden" aria-label="Excavation &amp; Earthmoving service">
           <img src="Assets/excavation-deep-pit-scale-1.webp" width="1200" height="1500" alt="Deep excavation work" class="service-img w-full h-full object-cover" />
           <div class="absolute inset-0 bg-gradient-to-t from-char-950 via-char-950/40 to-transparent"></div>
           <div class="absolute top-5 left-5 flex items-center gap-2">
             <span class="font-display text-5xl text-gold-400/90 leading-none">02</span>
           </div>
-        </div>
+        </a>
         <div class="p-7 lg:p-8">
-          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight">Excavation<br/>& Earthmoving</h3>
+          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight"><a href="/services/excavation-earthmoving" class="hover:text-gold-400 transition">Excavation<br/>& Earthmoving</a></h3>
           <p class="mt-3 text-cream/65 leading-relaxed">
             Bulk dig-outs, pits, trenches, and full-scope excavation. Small machine access when it's tight.
           </p>
@@ -588,24 +645,24 @@
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Bulk Earthmoving & Excavation</li>
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Complete Excavation Services</li>
           </ul>
-          <div class="mt-7 flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
+          <a href="#contact" data-service="Excavation &amp; Earthmoving" aria-label="Book Excavation &amp; Earthmoving" class="service-book mt-7 inline-flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
             <span>Book this service</span>
             <svg class="service-arrow w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </div>
+          </a>
         </div>
       </article>
 
       <!-- 3. Civil & Drainage -->
       <article class="service-card group relative overflow-hidden rounded-sm bg-char-900 border border-cream/5">
-        <div class="relative h-72 overflow-hidden">
+        <a href="/services/civil-drainage" class="block relative h-72 overflow-hidden" aria-label="Civil &amp; Drainage service">
           <img src="Assets/civil-aerial-townhouses-1.webp" width="1200" height="900" alt="Civil construction and drainage" class="service-img w-full h-full object-cover" />
           <div class="absolute inset-0 bg-gradient-to-t from-char-950 via-char-950/40 to-transparent"></div>
           <div class="absolute top-5 left-5 flex items-center gap-2">
             <span class="font-display text-5xl text-gold-400/90 leading-none">03</span>
           </div>
-        </div>
+        </a>
         <div class="p-7 lg:p-8">
-          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight">Civil<br/>& Drainage</h3>
+          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight"><a href="/services/civil-drainage" class="hover:text-gold-400 transition">Civil<br/>& Drainage</a></h3>
           <p class="mt-3 text-cream/65 leading-relaxed">
             Civil works, stormwater and drainage runs. Built to plan, backfilled clean.
           </p>
@@ -614,24 +671,24 @@
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Drainage Installation & Solutions</li>
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Stormwater & Site Drainage</li>
           </ul>
-          <div class="mt-7 flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
+          <a href="#contact" data-service="Civil &amp; Drainage" aria-label="Book Civil &amp; Drainage" class="service-book mt-7 inline-flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
             <span>Book this service</span>
             <svg class="service-arrow w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </div>
+          </a>
         </div>
       </article>
 
       <!-- 4. Retaining Walls -->
       <article class="service-card group relative overflow-hidden rounded-sm bg-char-900 border border-cream/5">
-        <div class="relative h-72 overflow-hidden">
-          <img src="Assets/retaining-wall-shed-sleeper-1.webp" width="1179" height="1568" alt="Concrete sleeper retaining wall installation" class="service-img w-full h-full object-cover" />
+        <a href="/services/retaining-walls" class="block relative h-72 overflow-hidden" aria-label="Retaining Walls service">
+          <img src="Assets/retaining-wall-stepped-sleeper-corner-1.webp" width="1200" height="1600" alt="Stepped corner in a new concrete sleeper retaining wall, set around established trees on a residential block" class="service-img w-full h-full object-cover" style="object-position:50% 75%" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-char-950 via-char-950/40 to-transparent"></div>
           <div class="absolute top-5 left-5 flex items-center gap-2">
             <span class="font-display text-5xl text-gold-400/90 leading-none">04</span>
           </div>
-        </div>
+        </a>
         <div class="p-7 lg:p-8">
-          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight">Retaining<br/>Walls</h3>
+          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight"><a href="/services/retaining-walls" class="hover:text-gold-400 transition">Retaining<br/>Walls</a></h3>
           <p class="mt-3 text-cream/65 leading-relaxed">
             Concrete sleeper, timber and stone retaining walls. Engineered to plan, built to hold.
           </p>
@@ -640,24 +697,24 @@
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Tiered & Slope Walls</li>
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Excavation & Backfill</li>
           </ul>
-          <div class="mt-7 flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
+          <a href="#contact" data-service="Retaining Walls" aria-label="Book Retaining Walls" class="service-book mt-7 inline-flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
             <span>Book this service</span>
             <svg class="service-arrow w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </div>
+          </a>
         </div>
       </article>
 
       <!-- 5. Landscaping & Rural -->
       <article class="service-card group relative overflow-hidden rounded-sm bg-char-900 border border-cream/5">
-        <div class="relative h-72 overflow-hidden">
-          <img src="Assets/rural-earthmoving-tank-1.webp" width="1200" height="1500" alt="Rural earthmoving and tank pad" class="service-img w-full h-full object-cover" />
+        <a href="/services/landscaping-rural" class="block relative h-72 overflow-hidden" aria-label="Landscaping &amp; Rural service">
+          <img src="Assets/landscaping-garden-bed-skidsteer-1.webp" width="1200" height="1600" alt="Landscaping earthworks on a new home block, with a skid steer shaping the garden bed behind a concrete sleeper wall" class="service-img w-full h-full object-cover" style="object-position:50% 70%" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-char-950 via-char-950/40 to-transparent"></div>
           <div class="absolute top-5 left-5 flex items-center gap-2">
             <span class="font-display text-5xl text-gold-400/90 leading-none">05</span>
           </div>
-        </div>
+        </a>
         <div class="p-7 lg:p-8">
-          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight">Landscaping<br/>& Rural</h3>
+          <h3 class="font-display text-3xl lg:text-4xl uppercase text-cream leading-tight"><a href="/services/landscaping-rural" class="hover:text-gold-400 transition">Landscaping<br/>& Rural</a></h3>
           <p class="mt-3 text-cream/65 leading-relaxed">
             Reshape yards and acreage, rural access tracks, dam and tank pads, paddock works.
           </p>
@@ -665,10 +722,10 @@
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Landscaping & Earthworks</li>
             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 bg-gold-400 rounded-full"></span>Rural & Agricultural Projects</li>
           </ul>
-          <div class="mt-7 flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
+          <a href="#contact" data-service="Landscaping &amp; Rural" aria-label="Book Landscaping &amp; Rural" class="service-book mt-7 inline-flex items-center gap-2 text-gold-400 font-sport tracking-[0.2em] uppercase text-xs">
             <span>Book this service</span>
             <svg class="service-arrow w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </div>
+          </a>
         </div>
       </article>
     </div>
@@ -697,29 +754,6 @@
         </a>
         <a href="https://instagram.com/charmexcavation" target="_blank" rel="noopener" style="white-space:nowrap" class="inline-flex items-center gap-3 font-sport tracking-[0.2em] uppercase text-sm text-cream/80 hover:text-gold-400 transition">
           Follow @charmexcavation
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- Featured project film (vertical social cut, click to play with sound) -->
-    <div class="grid lg:grid-cols-12 gap-8 lg:gap-14 items-center mb-14 lg:mb-20">
-      <div class="lg:col-span-5 flex justify-center lg:justify-start">
-        <div class="relative w-full max-w-[340px] aspect-[9/16] overflow-hidden rounded-sm border border-cream/10 bg-char-950 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.7)]">
-          <video class="w-full h-full object-cover" controls playsinline preload="none" poster="/Assets/brighton-beach-project-1.jpg" aria-label="Video: Charm Excavation bulk excavation and tank install on a Brighton Beach block">
-            <source src="/Assets/brighton-beach-project-1.mp4" type="video/mp4" />
-          </video>
-        </div>
-      </div>
-      <div class="lg:col-span-7">
-        <div class="flex items-center gap-3 mb-5">
-          <span class="h-px w-10 bg-gold-400"></span>
-          <span class="font-sport text-xs tracking-[0.3em] uppercase text-gold-400">Project Film</span>
-        </div>
-        <h3 class="font-display text-4xl md:text-5xl uppercase leading-[0.95] text-cream mb-6">Brighton Beach <span class="text-burgundy-500">project.</span></h3>
-        <p class="text-cream/70 text-lg leading-relaxed max-w-xl mb-8">Bulk excavation on a tight Brighton Beach block, from the first cut through drainage pits, an underground tank install and truck-loaded cart-away. Shot from the air and on the ground.</p>
-        <a href="#contact" class="inline-flex items-center gap-3 font-sport font-semibold tracking-wider uppercase text-sm px-6 py-3.5 rounded-sm bg-burgundy-700 text-cream cta-primary">
-          Get a quote for your job
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -755,7 +789,7 @@
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
       <div class="gallery-item relative overflow-hidden rounded-sm aspect-[4/3]">
-        <img src="Assets/machinery-branded-fleet-1.webp" width="1200" height="900" alt="" class="w-full h-full object-cover" />
+        <img src="Assets/site-prep-cleared-block-tracked-1.webp" width="1200" height="1600" alt="" class="w-full h-full object-cover" style="object-position:50% 70%" loading="lazy" />
         <div class="absolute inset-0 bg-gradient-to-t from-char-950/70 to-transparent"></div>
       </div>
     </div>
@@ -1147,6 +1181,49 @@
         ticking = true;
       }
     }, { passive: true });
+  })();
+
+  // "Book this service" jumps to the quote form with that service already picked
+  (function () {
+    const select = document.querySelector('#contact select[name="service"]');
+    if (!select) return;
+    document.querySelectorAll('a[data-service]').forEach((a) => {
+      a.addEventListener('click', () => { select.value = a.dataset.service; });
+    });
+  })();
+
+  // Hero film: muted autoplay is the only kind browsers allow, so sound is on request.
+  // Paused once scrolled past, and held still for reduced motion and data saver.
+  (function () {
+    const film = document.getElementById('hero-film');
+    const btn = document.getElementById('hero-film-sound');
+    if (!film || !btn) return;
+    const label = btn.querySelector('span');
+    const paint = () => {
+      label.textContent = film.paused ? 'Play film' : (film.muted ? 'Sound on' : 'Sound off');
+      btn.setAttribute('aria-pressed', String(!film.paused && !film.muted));
+    };
+    btn.addEventListener('click', () => {
+      if (film.paused) { film.muted = false; film.play().catch(paint); }
+      else film.muted = !film.muted;
+      paint();
+    });
+    film.addEventListener('play', paint);
+    film.addEventListener('pause', paint);
+    const quiet = window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      (navigator.connection && navigator.connection.saveData);
+    if (quiet) { film.removeAttribute('autoplay'); film.preload = 'none'; film.pause(); paint(); return; }
+    film.muted = true;
+    const started = film.play();
+    if (started) started.catch(paint);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) film.play().catch(paint);
+          else film.pause();
+        });
+      }, { threshold: 0.15 }).observe(film);
+    }
   })();
 </script>
 </body>

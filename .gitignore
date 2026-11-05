@@ -9,3 +9,6 @@ temporary screenshots/
 #   ./build/tailwindcss -c build/tailwind.config.js -i build/input.css -o styles.css --minify
 build/tailwindcss
 build/tailwindcss-*
+
+# Internal notes. The host publishes everything tracked here, so this stays local.
+CLAUDE.md
